@@ -267,7 +267,7 @@ export default function NewsStrip({
 
             {variant === 'static' && (
               <div className="space-y-2">
-                {displayNews.slice(0, 3).map((item, index) => (
+                {displayNews.slice(0, 3).map((item) => (
                   <Link
                     key={item.id}
                     href={item.url || '/news'}
