@@ -1,3 +1,0 @@
-# This file prevents Netlify from automatically detecting Next.js
-# and installing plugins that may cause dependency conflicts
-DISABLE_AUTOMATIC_DETECTION=true

@@ -1,18 +1,13 @@
 [build]
   publish = "out"
   command = "npm run build"
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
 
 [build.environment]
   NODE_VERSION = "20.11.0"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   DISABLE_NEXT_PLUGIN = "true"
 
-# Explicitly disable Next.js plugin
-[build.functions]
-  included_files = []
-
-# Static site configuration
+# Static site configuration - no functions needed
 [[headers]]
   for = "/*"
   [headers.values]
