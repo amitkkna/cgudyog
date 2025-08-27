@@ -3,10 +3,11 @@
   command = "node build-script.js"
 
 [build.environment]
-  NODE_VERSION = "20.11.0"
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  DISABLE_NEXT_PLUGIN = "true"
-  NETLIFY_SKIP_FRAMEWORK_DETECTION = "true"
+  NODE_VERSION = "20"
+
+# Pinned Next.js plugin version to avoid dependency conflicts
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 # Static site configuration
 [[headers]]
