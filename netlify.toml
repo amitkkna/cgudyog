@@ -13,17 +13,4 @@
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"ish = "out"
-  command = "npm run build"
-
-[build.environment]
-  NODE_VERSION = "20.11.0"
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  DISABLE_NEXT_PLUGIN = "true"
-
-# Static site configuration - no functions needed
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
