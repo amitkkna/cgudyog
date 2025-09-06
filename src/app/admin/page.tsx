@@ -128,6 +128,8 @@ export default function Admin() {
               <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Home</Link>
               <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
               <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Directory</Link>
+              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
+              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
               <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Contact</Link>
             </nav>
@@ -180,12 +182,12 @@ export default function Admin() {
                       { label: 'Active Members', value: '450', icon: UserGroupIcon, color: 'from-purple-500 to-purple-600' },
                       { label: 'Monthly Visitors', value: '50K+', icon: ChartBarIcon, color: 'from-orange-500 to-orange-600' }
                     ].map((stat, index) => (
-                      <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100">
-                        <div className={`p-3 bg-gradient-to-r ${stat.color} rounded-xl w-fit mb-4`}>
+                      <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100 text-center">
+                        <div className={`p-3 bg-gradient-to-r ${stat.color} rounded-xl w-fit mx-auto mb-4`}>
                           <stat.icon className="h-6 w-6 text-white" />
                         </div>
-                        <p className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
-                        <p className="text-gray-600">{stat.label}</p>
+                        <p className="text-3xl font-bold text-gray-900 mb-1 text-center">{stat.value}</p>
+                        <p className="text-gray-600 text-center">{stat.label}</p>
                       </div>
                     ))}
                   </div>

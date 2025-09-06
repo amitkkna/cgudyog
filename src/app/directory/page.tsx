@@ -13,14 +13,18 @@ import {
   MagnifyingGlassIcon,
   Squares2X2Icon,
   ListBulletIcon,
+  TableCellsIcon,
   StarIcon,
   CalendarDaysIcon,
   UsersIcon,
   TruckIcon,
+  InformationCircleIcon,
   CogIcon,
   BeakerIcon,
   HomeIcon,
-  BanknotesIcon
+  BanknotesIcon,
+  XMarkIcon,
+  TagIcon
 } from '@heroicons/react/24/outline';
 
 interface BusinessEntry {
@@ -287,6 +291,46 @@ const sampleBusinesses: BusinessEntry[] = [
 
 const categories = ["All", "Manufacturing", "Trading", "Transportation", "Technology", "Agriculture", "Services"];
 
+// Advertisement configurations
+const advertisementData = [
+  {
+    id: 1,
+    title: "Chhattisgarh Business Hub",
+    description: "Join the premier business network of Chhattisgarh. Connect with 5000+ verified businesses.",
+    cta: "Join Now",
+    image: "🏢",
+    gradient: "from-blue-500 to-cyan-500",
+    link: "/premium"
+  },
+  {
+    id: 2,
+    title: "Digital Marketing Solutions",
+    description: "Boost your online presence with our expert digital marketing services.",
+    cta: "Get Started",
+    image: "📱",
+    gradient: "from-purple-500 to-pink-500",
+    link: "/services/digital-marketing"
+  },
+  {
+    id: 3,
+    title: "Business Loans & Finance",
+    description: "Quick business loans with competitive rates. Approved in 24 hours.",
+    cta: "Apply Now",
+    image: "💰",
+    gradient: "from-green-500 to-emerald-500",
+    link: "/finance"
+  },
+  {
+    id: 4,
+    title: "Trade Show Opportunities",
+    description: "Showcase your products at Chhattisgarh's biggest trade exhibitions.",
+    cta: "Register",
+    image: "🎪",
+    gradient: "from-orange-500 to-red-500",
+    link: "/events"
+  }
+];
+
 const categoryIcons = {
   "Manufacturing": CogIcon,
   "Trading": BanknotesIcon,
@@ -300,8 +344,11 @@ export default function Directory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('name');
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('table'); // 'table', 'grid', or 'list'
   const [filteredBusinesses, setFilteredBusinesses] = useState(sampleBusinesses);
+  const [showAd, setShowAd] = useState(false);
+  const [showPopupAd, setShowPopupAd] = useState(false);
+  const [showFloatingAd, setShowFloatingAd] = useState(false);
 
   useEffect(() => {
     const filtered = sampleBusinesses.filter(business => {
@@ -318,8 +365,6 @@ export default function Directory() {
       switch (sortBy) {
         case 'name':
           return a.name.localeCompare(b.name);
-        case 'rating':
-          return b.rating - a.rating;
         case 'established':
           return parseInt(b.established) - parseInt(a.established);
         case 'employees':
@@ -336,6 +381,62 @@ export default function Directory() {
 
     setFilteredBusinesses(filtered);
   }, [searchTerm, selectedCategory, sortBy]);
+
+  // Show ads periodically
+  useEffect(() => {
+    const adInterval = setInterval(() => {
+      setShowAd(true);
+      setTimeout(() => setShowAd(false), 8000); // Show ad for 8 seconds
+    }, 30000); // Show ad every 30 seconds
+
+    return () => clearInterval(adInterval);
+  }, []);
+
+  // Show popup ads periodically
+  useEffect(() => {
+    const popupInterval = setInterval(() => {
+      setShowPopupAd(true);
+    }, 60000); // Show popup every 60 seconds
+
+    return () => clearInterval(popupInterval);
+  }, []);
+
+  // Show floating ads
+  useEffect(() => {
+    const floatingAdTimer = setTimeout(() => {
+      setShowFloatingAd(true);
+    }, 15000); // Show floating ad after 15 seconds
+
+    return () => clearTimeout(floatingAdTimer);
+  }, []);
+
+  // Generate inline ad components for grid/list views
+  const generateInlineAd = (index: number) => {
+    const ad = advertisementData[index % advertisementData.length];
+    
+    return (
+      <motion.div
+        key={`ad-${ad.id}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className={`bg-gradient-to-r ${ad.gradient} rounded-2xl p-6 text-white shadow-lg relative overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300`}
+        onClick={() => window.open(ad.link, '_blank')}
+      >
+        <div className="absolute -top-8 -right-8 text-6xl opacity-20">
+          {ad.image}
+        </div>
+        <div className="relative z-10">
+          <div className="text-4xl mb-3">{ad.image}</div>
+          <h3 className="text-xl font-bold mb-2">{ad.title}</h3>
+          <p className="text-sm mb-4 opacity-90">{ad.description}</p>
+          <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-lg font-semibold hover:bg-white/30 transition-colors border border-white/30">
+            {ad.cta}
+          </button>
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -363,6 +464,8 @@ export default function Directory() {
               <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Home</Link>
               <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
               <Link href="/directory" className="text-blue-600 font-semibold border-b-2 border-blue-600">Directory</Link>
+              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
+              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
               <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Contact</Link>
               <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -428,7 +531,6 @@ export default function Directory() {
                 onChange={(e) => setSortBy(e.target.value)}
               >
                 <option value="name">Sort by Name</option>
-                <option value="rating">Sort by Rating</option>
                 <option value="established">Sort by Year</option>
                 <option value="employees">Sort by Size</option>
               </select>
@@ -436,12 +538,24 @@ export default function Directory() {
               {/* View Toggle */}
               <div className="flex bg-gray-100 rounded-xl p-1">
                 <button
+                  onClick={() => setViewMode('table')}
+                  className={`p-2 rounded-lg transition-all duration-300 ${
+                    viewMode === 'table' 
+                      ? 'bg-white shadow-sm text-blue-600' 
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                  title="Table View"
+                >
+                  <TableCellsIcon className="h-5 w-5" />
+                </button>
+                <button
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded-lg transition-all duration-300 ${
                     viewMode === 'grid' 
                       ? 'bg-white shadow-sm text-blue-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
+                  title="Grid View"
                 >
                   <Squares2X2Icon className="h-5 w-5" />
                 </button>
@@ -452,6 +566,7 @@ export default function Directory() {
                       ? 'bg-white shadow-sm text-blue-600' 
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
+                  title="List View"
                 >
                   <ListBulletIcon className="h-5 w-5" />
                 </button>
@@ -475,6 +590,27 @@ export default function Directory() {
             />
           </div>
 
+          {/* Banner Advertisement */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+              <div className="absolute -top-6 -right-6 text-8xl opacity-20">🏢</div>
+              <div className="flex flex-col md:flex-row items-center justify-between relative z-10">
+                <div className="flex-1 mb-4 md:mb-0">
+                  <h3 className="text-2xl font-bold mb-2">Featured Business Opportunities</h3>
+                  <p className="text-green-100">Reach thousands of potential customers across Chhattisgarh. Join our premium directory today!</p>
+                </div>
+                <div className="flex space-x-3">
+                  <button className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors shadow-lg">
+                    Get Featured
+                  </button>
+                  <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Results Header */}
           <div className="flex justify-between items-center mb-8">
             <p className="text-gray-600">
@@ -487,7 +623,202 @@ export default function Directory() {
 
           {/* Business Listings */}
           <AnimatePresence mode="wait">
-            {viewMode === 'grid' ? (
+            {viewMode === 'table' ? (
+              <motion.div
+                key="table"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100"
+              >
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-gradient-to-r from-slate-50 to-gray-50">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          <div className="flex items-center space-x-2">
+                            <BuildingOfficeIcon className="h-4 w-4 text-blue-600" />
+                            <span>Business</span>
+                          </div>
+                        </th>
+                        <th className="px-4 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          <div className="flex items-center space-x-1">
+                            <TagIcon className="h-3 w-3 text-blue-600" />
+                            <span>Category</span>
+                          </div>
+                        </th>
+                        <th className="px-4 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          <div className="flex items-center space-x-1">
+                            <PhoneIcon className="h-3 w-3 text-blue-600" />
+                            <span>Contact</span>
+                          </div>
+                        </th>
+                        <th className="px-4 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          <div className="flex items-center space-x-1">
+                            <MapPinIcon className="h-3 w-3 text-blue-600" />
+                            <span>Location</span>
+                          </div>
+                        </th>
+                        <th className="px-4 py-4 text-left text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          <div className="flex items-center space-x-1">
+                            <InformationCircleIcon className="h-3 w-3 text-blue-600" />
+                            <span>Details</span>
+                          </div>
+                        </th>
+                        <th className="px-4 py-4 text-center text-xs font-bold text-gray-800 uppercase tracking-wider border-b border-gray-200">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {filteredBusinesses.map((business, index) => {
+                        const CategoryIcon = categoryIcons[business.category as keyof typeof categoryIcons] || BuildingOfficeIcon;
+                        return (
+                          <motion.tr
+                            key={business.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            className={`group hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300 ${
+                              business.featured ? 'bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400' : ''
+                            } hover:shadow-lg`}
+                          >
+                            <td className="px-6 py-4">
+                              <div className="flex items-center space-x-3">
+                                <div className="relative">
+                                  <div className={`p-2 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 ${
+                                    business.featured 
+                                      ? 'bg-gradient-to-r from-amber-500 to-orange-500' 
+                                      : 'bg-gradient-to-r from-blue-500 to-indigo-500'
+                                  }`}>
+                                    <CategoryIcon className="h-5 w-5 text-white" />
+                                  </div>
+                                  {business.featured && (
+                                    <div className="absolute -top-1 -right-1 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full p-0.5">
+                                      <StarIcon className="h-2 w-2 text-white fill-current" />
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center space-x-2 mb-1">
+                                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-blue-700 transition-colors">
+                                      {business.name}
+                                    </h3>
+                                    {business.featured && (
+                                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-yellow-500 text-white shadow-sm">
+                                        <StarIcon className="h-2 w-2 mr-1 fill-current" />
+                                        Premium
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed max-w-sm">
+                                    {business.description}
+                                  </p>
+                                  <div className="flex items-center mt-2 space-x-2">
+                                    {business.services.slice(0, 2).map((service, i) => (
+                                      <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-blue-100 text-blue-700">
+                                        {service}
+                                      </span>
+                                    ))}
+                                    {business.services.length > 2 && (
+                                      <span className="text-xs text-gray-500">+{business.services.length - 2}</span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="inline-flex items-center">
+                                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 border border-blue-200 shadow-sm group-hover:shadow-md transition-all duration-300">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                                  {business.category}
+                                </span>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="space-y-2">
+                                <div className="flex items-center group/contact">
+                                  <div className="flex items-center justify-center w-6 h-6 bg-blue-100 rounded-lg mr-2 group-hover/contact:bg-blue-200 transition-colors">
+                                    <PhoneIcon className="h-3 w-3 text-blue-600" />
+                                  </div>
+                                  <a href={`tel:${business.phone}`} className="text-xs font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                                    {business.phone}
+                                  </a>
+                                </div>
+                                <div className="flex items-center group/contact">
+                                  <div className="flex items-center justify-center w-6 h-6 bg-green-100 rounded-lg mr-2 group-hover/contact:bg-green-200 transition-colors">
+                                    <EnvelopeIcon className="h-3 w-3 text-green-600" />
+                                  </div>
+                                  <a href={`mailto:${business.email}`} className="text-xs font-medium text-gray-900 hover:text-green-600 transition-colors truncate max-w-[120px]">
+                                    {business.email}
+                                  </a>
+                                </div>
+                                {business.website && (
+                                  <div className="flex items-center group/contact">
+                                    <div className="flex items-center justify-center w-6 h-6 bg-purple-100 rounded-lg mr-2 group-hover/contact:bg-purple-200 transition-colors">
+                                      <GlobeAltIcon className="h-3 w-3 text-purple-600" />
+                                    </div>
+                                    <a href={`https://${business.website}`} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-gray-900 hover:text-purple-600 transition-colors truncate max-w-[120px]">
+                                      {business.website}
+                                    </a>
+                                  </div>
+                                )}
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="flex items-start space-x-2">
+                                <div className="flex items-center justify-center w-6 h-6 bg-red-100 rounded-lg mt-0.5">
+                                  <MapPinIcon className="h-3 w-3 text-red-600" />
+                                </div>
+                                <div className="flex-1">
+                                  <p className="text-xs font-medium text-gray-900 leading-relaxed max-w-[150px]">
+                                    {business.address}
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="space-y-2">
+                                <div className="flex items-center space-x-2">
+                                  <div className="flex items-center justify-center w-6 h-6 bg-amber-100 rounded-lg">
+                                    <StarIcon className="h-3 w-3 text-amber-600" />
+                                  </div>
+                                  <div className="flex items-center space-x-1">
+                                    <span className="text-xs font-bold text-gray-900">{business.rating}</span>
+                                    <span className="text-xs text-gray-500">/ 5</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                  <div className="flex items-center justify-center w-6 h-6 bg-green-100 rounded-lg">
+                                    <CalendarDaysIcon className="h-3 w-3 text-green-600" />
+                                  </div>
+                                  <span className="text-xs font-medium text-gray-900">{business.established}</span>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                  <div className="flex items-center justify-center w-6 h-6 bg-purple-100 rounded-lg">
+                                    <UsersIcon className="h-3 w-3 text-purple-600" />
+                                  </div>
+                                  <span className="text-xs font-medium text-gray-900">{business.employees} employees</span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-4 py-4">
+                              <div className="flex justify-center">
+                                <button className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg text-xs">
+                                  <BuildingOfficeIcon className="h-3 w-3 mr-1" />
+                                  View
+                                </button>
+                              </div>
+                            </td>
+                          </motion.tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </motion.div>
+            ) : viewMode === 'grid' ? (
               <motion.div
                 key="grid"
                 initial={{ opacity: 0 }}
@@ -497,6 +828,7 @@ export default function Directory() {
               >
                 {filteredBusinesses.map((business, index) => {
                   const CategoryIcon = categoryIcons[business.category as keyof typeof categoryIcons] || BuildingOfficeIcon;
+                  
                   return (
                     <motion.div
                       key={business.id}
@@ -601,8 +933,15 @@ export default function Directory() {
                     </motion.div>
                   );
                 })}
+                
+                {/* Interstitial Ads in Grid */}
+                {filteredBusinesses.length > 6 && (
+                  <div className="col-span-full">
+                    {generateInlineAd(0)}
+                  </div>
+                )}
               </motion.div>
-            ) : (
+            ) : viewMode === 'list' ? (
               <motion.div
                 key="list"
                 initial={{ opacity: 0 }}
@@ -717,8 +1056,40 @@ export default function Directory() {
                   );
                 })}
               </motion.div>
-            )}
+            ) : null}
           </AnimatePresence>
+
+          {/* Inline Advertisement */}
+          {showAd && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="my-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden"
+            >
+              <div className="absolute -top-8 -right-8 text-8xl opacity-20">📈</div>
+              <button 
+                onClick={() => setShowAd(false)}
+                className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors z-20"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
+              <div className="flex items-center justify-between relative z-10">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2">Premium Business Analytics</h3>
+                  <p className="text-purple-100 mb-4">Get detailed insights about your business performance. Track views, leads, and customer engagement.</p>
+                  <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors shadow-lg">
+                    View Analytics
+                  </button>
+                </div>
+                <div className="hidden md:block ml-6">
+                  <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center">
+                    <div className="text-5xl">📊</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
 
           {filteredBusinesses.length === 0 && (
             <motion.div
@@ -733,6 +1104,100 @@ export default function Directory() {
           )}
         </div>
       </section>
+
+      {/* Popup Advertisement */}
+      {showPopupAd && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
+          >
+            <div className="absolute -top-4 -right-4 text-6xl opacity-10">🎯</div>
+            <button 
+              onClick={() => setShowPopupAd(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-20"
+            >
+              <XMarkIcon className="h-6 w-6" />
+            </button>
+            
+            <div className="text-center relative z-10">
+              <div className="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="text-3xl">⭐</div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                Limited Time Offer!
+              </h3>
+              
+              <p className="text-gray-600 mb-6">
+                Get 50% off on premium business listing for the first 3 months. 
+                Boost your visibility and connect with more customers across Chhattisgarh.
+              </p>
+              
+              <div className="space-y-3">
+                <button 
+                  onClick={() => setShowPopupAd(false)}
+                  className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                >
+                  Claim 50% Off Now
+                </button>
+                <button 
+                  onClick={() => setShowPopupAd(false)}
+                  className="w-full text-gray-500 py-2 rounded-lg font-medium hover:text-gray-700 transition-colors"
+                >
+                  Maybe Later
+                </button>
+              </div>
+              
+              <p className="text-xs text-gray-400 mt-4">
+                Offer valid until December 31, 2024
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Floating Advertisement */}
+      {showFloatingAd && (
+        <motion.div
+          initial={{ x: 400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 400, opacity: 0 }}
+          className="fixed bottom-6 right-6 max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 p-4 z-40"
+        >
+          <button 
+            onClick={() => setShowFloatingAd(false)}
+            className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <XMarkIcon className="h-5 w-5" />
+          </button>
+          
+          <div className="pr-6">
+            <div className="flex items-center mb-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-3">
+                <div className="text-lg">💼</div>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Business Growth</h4>
+                <p className="text-xs text-gray-500">Sponsored</p>
+              </div>
+            </div>
+            
+            <p className="text-sm text-gray-600 mb-3">
+              Scale your business with our proven marketing strategies.
+            </p>
+            
+            <button 
+              onClick={() => setShowFloatingAd(false)}
+              className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300"
+            >
+              Learn More
+            </button>
+          </div>
+        </motion.div>
+      )}
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8">

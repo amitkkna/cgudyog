@@ -34,6 +34,8 @@ export default function About() {
               <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
               <Link href="/about" className="text-blue-600 font-medium">About</Link>
               <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-colors">Directory</Link>
+              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-colors">Marketplace</Link>
+              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-colors">Jobs</Link>
               <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-colors">News</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</Link>
               <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">

@@ -191,6 +191,8 @@ export default function Home() {
               <Link href="/" className="text-blue-600 font-semibold border-b-2 border-blue-600">Home</Link>
               <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
               <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Directory</Link>
+              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
+              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
               <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
               <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Contact</Link>
               <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -203,14 +205,14 @@ export default function Home() {
 
       {/* News Strip */}
       <NewsStrip 
-        position="top"
+        position="inline"
         variant="scrolling"
         autoPlay={true}
-        speed={30}
+        speed={35}
         pauseOnHover={true}
         showControls={false}
-        showClose={false}
-        maxItems={5}
+        showClose={true}
+        maxItems={6}
         language="en"
       />
 
@@ -305,14 +307,14 @@ export default function Home() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100"
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 text-center"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
                 <div className={`p-3 bg-gradient-to-r ${stat.color} rounded-xl w-fit mx-auto mb-4`}>
                   <stat.icon className="h-8 w-8 text-white" />
                 </div>
-                <p className="text-4xl font-bold text-gray-900 mb-2">{stat.number}</p>
-                <p className="text-gray-600 font-medium">{stat.label}</p>
+                <p className="text-4xl font-bold text-gray-900 mb-2 text-center">{stat.number}</p>
+                <p className="text-gray-600 font-medium text-center">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>

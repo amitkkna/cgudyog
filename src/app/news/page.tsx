@@ -46,37 +46,37 @@ interface NewsItem {
   featured: boolean;
 }
 
-// Sample news data - In real app, this would come from a database
+// Enhanced news data with more comprehensive content
 const sampleNews: NewsItem[] = [
   {
     id: 1,
     title: {
-      en: "Chhattisgarh Industrial Growth Reaches New Heights",
-      hi: "छत्तीसगढ़ का औद्योगिक विकास नई ऊंचाइयों पर पहुंचा"
+      en: "BREAKING: Chhattisgarh Industrial Growth Reaches Record 35% Increase",
+      hi: "ब्रेकिंग: छत्तीसगढ़ का औद्योगिक विकास रिकॉर्ड 35% वृद्धि पर पहुंचा"
     },
     excerpt: {
-      en: "The state's industrial sector has shown remarkable growth with new investments and expansion projects across multiple sectors.",
-      hi: "राज्य के औद्योगिक क्षेत्र ने विभिन्न क्षेत्रों में नए निवेश और विस्तार परियोजनाओं के साथ उल्लेखनीय वृद्धि दिखाई है।"
+      en: "Historic milestone achieved as state's industrial sector posts highest growth rate in two decades with major international investments.",
+      hi: "प्रमुख अंतर्राष्ट्रीय निवेश के साथ राज्य के औद्योगिक क्षेत्र ने दो दशकों में सबसे अधिक विकास दर दर्ज करते हुए ऐतिहासिक मील का पत्थर हासिल किया।"
     },
     content: {
-      en: "Chhattisgarh's industrial landscape continues to flourish with significant investments in manufacturing, mining, and technology sectors. The state government's progressive policies and business-friendly environment have attracted both domestic and international investors, leading to unprecedented growth in industrial output and employment opportunities.",
-      hi: "छत्तीसगढ़ का औद्योगिक परिदृश्य विनिर्माण, खनन और प्रौद्योगिकी क्षेत्रों में महत्वपूर्ण निवेश के साथ फलता-फूलता रहा है। राज्य सरकार की प्रगतिशील नीतियों और व्यापार-अनुकूल वातावरण ने घरेलू और अंतर्राष्ट्रीय दोनों निवेशकों को आकर्षित किया है, जिससे औद्योगिक उत्पादन और रोजगार के अवसरों में अभूतपूर्व वृद्धि हुई है।"
+      en: "Chhattisgarh has achieved a remarkable milestone with industrial growth reaching 35%, the highest in two decades. Major international companies including Fortune 500 firms have announced investments worth ₹25,000 crores across manufacturing, mining, and renewable energy sectors. The state's progressive industrial policies, streamlined approval processes, and world-class infrastructure have positioned it as India's emerging industrial powerhouse.",
+      hi: "छत्तीसगढ़ ने औद्योगिक विकास 35% तक पहुंचने के साथ एक उल्लेखनीय मील का पत्थर हासिल किया है, जो दो दशकों में सबसे अधिक है। फॉर्च्यून 500 फर्मों सहित प्रमुख अंतर्राष्ट्रीय कंपनियों ने विनिर्माण, खनन और नवीकरणीय ऊर्जा क्षेत्रों में ₹25,000 करोड़ के निवेश की घोषणा की है।"
     },
-    date: "2024-08-25",
+    date: "2024-09-06",
     category: {
-      en: "Industry News",
-      hi: "उद्योग समाचार"
+      en: "Breaking News",
+      hi: "ब्रेकिंग न्यूज़"
     },
     author: {
-      en: "Industrial Correspondent",
-      hi: "औद्योगिक संवाददाता"
+      en: "Economic Affairs Desk",
+      hi: "आर्थिक मामलों की डेस्क"
     },
     readTime: {
-      en: "5 min read",
-      hi: "5 मिनट पढ़ें"
+      en: "7 min read",
+      hi: "7 मिनट पढ़ें"
     },
     featured: true,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop"
   },
   {
     id: 2,
@@ -222,12 +222,162 @@ const sampleNews: NewsItem[] = [
       hi: "5 मिनट पढ़ें"
     },
     featured: false
+  },
+  {
+    id: 7,
+    title: {
+      en: "₹50,000 Crore Investment Pipeline Announced for Chhattisgarh",
+      hi: "छत्तीसगढ़ के लिए ₹50,000 करोड़ का निवेश पाइपलाइन घोषित"
+    },
+    excerpt: {
+      en: "Major industrial conglomerates commit massive investments spanning steel, cement, power, and renewable energy sectors.",
+      hi: "प्रमुख औद्योगिक समूहों ने इस्पात, सीमेंट, ऊर्जा और नवीकरणीय ऊर्जा क्षेत्रों में बड़े पैमाने पर निवेश की प्रतिबद्धता जताई है।"
+    },
+    content: {
+      en: "In a landmark development, leading industrial houses have announced a cumulative investment of ₹50,000 crores in Chhattisgarh over the next five years. This includes expansion of existing steel plants, new cement manufacturing units, renewable energy projects, and advanced manufacturing facilities. The investments are expected to create over 2 lakh direct and indirect employment opportunities.",
+      hi: "एक ऐतिहासिक विकास में, अग्रणी औद्योगिक घरानों ने अगले पांच वर्षों में छत्तीसगढ़ में ₹50,000 करोड़ के संचयी निवेश की घोषणा की है। इसमें मौजूदा स्टील प्लांटों का विस्तार, नई सीमेंट विनिर्माण इकाइयां, नवीकरणीय ऊर्जा परियोजनाएं और उन्नत विनिर्माण सुविधाएं शामिल हैं।"
+    },
+    date: "2024-09-05",
+    category: {
+      en: "Investment News",
+      hi: "निवेश समाचार"
+    },
+    author: {
+      en: "Investment Desk",
+      hi: "निवेश डेस्क"
+    },
+    readTime: {
+      en: "8 min read",
+      hi: "8 मिनट पढ़ें"
+    },
+    featured: true,
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=400&fit=crop"
+  },
+  {
+    id: 8,
+    title: {
+      en: "Chhattisgarh Emerges as India's Leading Steel Production Hub",
+      hi: "छत्तीसगढ़ भारत के अग्रणी इस्पात उत्पादन केंद्र के रूप में उभरा"
+    },
+    excerpt: {
+      en: "State's steel production capacity reaches 40 million tonnes, positioning it as the country's largest steel producing region.",
+      hi: "राज्य की इस्पात उत्पादन क्षमता 40 मिलियन टन तक पहुंच गई है, जो इसे देश के सबसे बड़े इस्पात उत्पादक क्षेत्र के रूप में स्थापित करती है।"
+    },
+    content: {
+      en: "Chhattisgarh has achieved a historic milestone by becoming India's leading steel production hub with an annual capacity of 40 million tonnes. The state's abundant mineral resources, strategic location, and supportive government policies have attracted major steel manufacturers. This achievement places Chhattisgarh ahead of traditional steel-producing states and makes it a crucial player in India's steel self-reliance mission.",
+      hi: "छत्तीसगढ़ ने 40 मिलियन टन की वार्षिक क्षमता के साथ भारत के अग्रणी इस्पात उत्पादन केंद्र बनकर एक ऐतिहासिक मील का पत्थर हासिल किया है। राज्य के प्रचुर खनिज संसाधन, रणनीतिक स्थान और सहायक सरकारी नीतियों ने प्रमुख इस्पात निर्माताओं को आकर्षित किया है।"
+    },
+    date: "2024-09-04",
+    category: {
+      en: "Industry Achievement",
+      hi: "उद्योग उपलब्धि"
+    },
+    author: {
+      en: "Steel Industry Analyst",
+      hi: "इस्पात उद्योग विश्लेषक"
+    },
+    readTime: {
+      en: "6 min read",
+      hi: "6 मिनट पढ़ें"
+    },
+    featured: true,
+    image: "https://images.unsplash.com/photo-1565890681840-b40295ad1ba4?w=800&h=400&fit=crop"
+  },
+  {
+    id: 9,
+    title: {
+      en: "Start-up Ecosystem Flourishes with 500+ New Registrations",
+      hi: "500+ नए पंजीकरण के साथ स्टार्ट-अप इकोसिस्टम का विकास"
+    },
+    excerpt: {
+      en: "Chhattisgarh's entrepreneurial landscape witnesses unprecedented growth with innovative start-ups across technology and manufacturing sectors.",
+      hi: "छत्तीसगढ़ के उद्यमशीलता परिदृश्य में प्रौद्योगिकी और विनिर्माण क्षेत्रों में नवाचार स्टार्ट-अप के साथ अभूतपूर्व वृद्धि देखी गई है।"
+    },
+    content: {
+      en: "The state has registered over 500 new start-ups in the past year, marking a 300% increase from the previous year. These start-ups span across fintech, agritech, edtech, and manufacturing sectors. The government's start-up policy, incubation centers, and funding support have created a thriving ecosystem for young entrepreneurs.",
+      hi: "राज्य ने पिछले साल 500 से अधिक नए स्टार्ट-अप पंजीकृत किए हैं, जो पिछले साल से 300% की वृद्धि दर्शाता है। ये स्टार्ट-अप फिनटेक, एग्रीटेक, एडटेक और विनिर्माण क्षेत्रों में फैले हुए हैं।"
+    },
+    date: "2024-09-03",
+    category: {
+      en: "Entrepreneurship",
+      hi: "उद्यमिता"
+    },
+    author: {
+      en: "Start-up Reporter",
+      hi: "स्टार्ट-अप संवाददाता"
+    },
+    readTime: {
+      en: "5 min read",
+      hi: "5 मिनट पढ़ें"
+    },
+    featured: false,
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=400&fit=crop"
+  },
+  {
+    id: 10,
+    title: {
+      en: "International Business Delegation Visits Raipur for Trade Partnerships",
+      hi: "व्यापारिक साझेदारी के लिए अंतर्राष्ट्रीय व्यापार प्रतिनिधिमंडल की रायपुर यात्रा"
+    },
+    excerpt: {
+      en: "High-level business delegation from five countries explores collaboration opportunities in mining, agriculture, and renewable energy.",
+      hi: "पांच देशों के उच्च-स्तरीय व्यापार प्रतिनिधिमंडल ने खनन, कृषि और नवीकरणीय ऊर्जा में सहयोग के अवसरों की खोज की।"
+    },
+    content: {
+      en: "A prestigious international business delegation comprising representatives from Germany, Japan, South Korea, Australia, and UAE visited Raipur to explore potential partnerships. The delegation showed keen interest in Chhattisgarh's mineral wealth, agricultural produce, and renewable energy potential. Several MoUs worth ₹15,000 crores are expected to be signed.",
+      hi: "जर्मनी, जापान, दक्षिण कोरिया, ऑस्ट्रेलिया और UAE के प्रतिनिधियों से मिलकर एक प्रतिष्ठित अंतर्राष्ट्रीय व्यापार प्रतिनिधिमंडल ने संभावित साझेदारी की खोज के लिए रायपुर का दौरा किया।"
+    },
+    date: "2024-09-02",
+    category: {
+      en: "International Trade",
+      hi: "अंतर्राष्ट्रीय व्यापार"
+    },
+    author: {
+      en: "International Affairs Correspondent",
+      hi: "अंतर्राष्ट्रीय मामलों के संवाददाता"
+    },
+    readTime: {
+      en: "7 min read",
+      hi: "7 मिनट पढ़ें"
+    },
+    featured: false,
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=400&fit=crop"
+  },
+  {
+    id: 11,
+    title: {
+      en: "Green Energy Revolution: 2000 MW Solar Capacity Achieved",
+      hi: "हरित ऊर्जा क्रांति: 2000 मेगावाट सौर क्षमता हासिल"
+    },
+    excerpt: {
+      en: "Chhattisgarh leads renewable energy transition with massive solar installations and innovative green technology adoption.",
+      hi: "छत्तीसगढ़ बड़े पैमाने पर सौर प्रतिष्ठानों और नवाचार हरित प्रौद्योगिकी अपनाने के साथ नवीकरणीय ऊर्जा संक्रमण का नेतृत्व करता है।"
+    },
+    content: {
+      en: "The state has achieved a remarkable milestone of 2000 MW solar power generation capacity, making it one of India's leading renewable energy producers. This achievement aligns with India's commitment to achieve net-zero emissions by 2070. The state is also developing floating solar projects and energy storage solutions.",
+      hi: "राज्य ने 2000 मेगावाट सौर ऊर्जा उत्पादन क्षमता का एक उल्लेखनीय मील का पत्थर हासिल किया है, जो इसे भारत के अग्रणी नवीकरणीय ऊर्जा उत्पादकों में से एक बनाता है।"
+    },
+    date: "2024-09-01",
+    category: {
+      en: "Renewable Energy",
+      hi: "नवीकरणीय ऊर्जा"
+    },
+    author: {
+      en: "Energy Correspondent",
+      hi: "ऊर्जा संवाददाता"
+    },
+    readTime: {
+      en: "6 min read",
+      hi: "6 मिनट पढ़ें"
+    },
+    featured: false,
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=400&fit=crop"
   }
 ];
 
 const categories = {
-  en: ["All", "Industry News", "Association News", "Events", "Government Policy", "Sustainability", "Trade & Export"],
-  hi: ["सभी", "उद्योग समाचार", "संघ समाचार", "कार्यक्रम", "सरकारी नीति", "स्थिरता", "व्यापार और निर्यात"]
+  en: ["All", "Breaking News", "Industry News", "Association News", "Events", "Government Policy", "Sustainability", "Trade & Export", "Investment News", "Industry Achievement", "Entrepreneurship", "International Trade", "Renewable Energy"],
+  hi: ["सभी", "ब्रेकिंग न्यूज़", "उद्योग समाचार", "संघ समाचार", "कार्यक्रम", "सरकारी नीति", "स्थिरता", "व्यापार और निर्यात", "निवेश समाचार", "उद्योग उपलब्धि", "उद्यमिता", "अंतर्राष्ट्रीय व्यापार", "नवीकरणीय ऊर्जा"]
 };
 
 export default function News() {
@@ -292,6 +442,12 @@ export default function News() {
                 <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
                   {language === 'en' ? 'Directory' : 'निर्देशिका'}
                 </Link>
+                <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
+                  {language === 'en' ? 'Marketplace' : 'मार्केटप्लेस'}
+                </Link>
+                <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
+                  {language === 'en' ? 'Jobs' : 'नौकरियां'}
+                </Link>
                 <Link href="/news" className="text-blue-600 font-semibold border-b-2 border-blue-600">
                   {language === 'en' ? 'News' : 'समाचार'}
                 </Link>
@@ -317,6 +473,39 @@ export default function News() {
           </div>
         </div>
       </header>
+
+      {/* Premium Breaking News Banner */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 shadow-lg relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <motion.span 
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide"
+              >
+                {language === 'en' ? 'BREAKING' : 'ब्रेकिंग'}
+              </motion.span>
+              <div className="hidden md:block w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              <p className="text-sm md:text-base font-medium">
+                {language === 'en' 
+                  ? 'Chhattisgarh Industrial Growth Reaches Record 35% Increase - Major International Investments Announced'
+                  : 'छत्तीसगढ़ का औद्योगिक विकास रिकॉर्ड 35% वृद्धि पर पहुंचा - प्रमुख अंतर्राष्ट्रीय निवेश की घोषणा'
+                }
+              </p>
+            </div>
+            <div className="flex items-center space-x-2 text-sm">
+              <ClockIcon className="h-4 w-4" />
+              <span>{language === 'en' ? 'Live Updates' : 'लाइव अपडेट'}</span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Hero Section */}
       <section className="py-20">
@@ -388,16 +577,28 @@ export default function News() {
 
       {/* Featured News */}
       {featuredNews.length > 0 && (
-        <section className="py-16 bg-white/50 backdrop-blur-sm">
+        <section className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.h3
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold text-gray-900 mb-12 text-center"
+              className="text-center mb-16"
             >
-              {language === 'en' ? 'Featured Stories' : 'मुख्य समाचार'}
-            </motion.h3>
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                <span className="mr-2">⭐</span>
+                {language === 'en' ? 'Premium Featured Stories' : 'प्रीमियम मुख्य समाचार'}
+              </div>
+              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                {language === 'en' ? 'Breaking Headlines' : 'मुख्य समाचार'}
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {language === 'en' 
+                  ? 'Stay ahead with the most impactful stories shaping Chhattisgarh\'s business landscape'
+                  : 'छत्तीसगढ़ के व्यापारिक परिदृश्य को आकार देने वाली सबसे प्रभावशाली कहानियों के साथ आगे रहें'
+                }
+              </p>
+            </motion.div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredNews.map((news, index) => (

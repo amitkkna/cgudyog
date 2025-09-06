@@ -106,6 +106,73 @@ const stripNewsData: NewsStripItem[] = [
       hi: "व्यापार और निर्यात"
     },
     url: "/news/6"
+  },
+  {
+    id: 6,
+    title: {
+      en: "₹50,000 Crore Investment Pipeline Announced - Major Industrial Boost",
+      hi: "₹50,000 करोड़ निवेश पाइपलाइन घोषित - बड़ा औद्योगिक बूस्ट"
+    },
+    date: "2024-09-05",
+    category: {
+      en: "Investment News",
+      hi: "निवेश समाचार"
+    },
+    isBreaking: true,
+    url: "/news/7"
+  },
+  {
+    id: 7,
+    title: {
+      en: "Chhattisgarh Becomes India's Leading Steel Production Hub - 40MT Capacity",
+      hi: "छत्तीसगढ़ भारत का अग्रणी इस्पात उत्पादन केंद्र - 40MT क्षमता"
+    },
+    date: "2024-09-04",
+    category: {
+      en: "Industry Achievement",
+      hi: "उद्योग उपलब्धि"
+    },
+    isBreaking: true,
+    url: "/news/8"
+  },
+  {
+    id: 8,
+    title: {
+      en: "500+ Start-ups Registered - Entrepreneurship Ecosystem Flourishes",
+      hi: "500+ स्टार्ट-अप पंजीकृत - उद्यमिता इकोसिस्टम का विकास"
+    },
+    date: "2024-09-03",
+    category: {
+      en: "Entrepreneurship",
+      hi: "उद्यमिता"
+    },
+    url: "/news/9"
+  },
+  {
+    id: 9,
+    title: {
+      en: "International Delegation Visits for Trade Partnerships - ₹15,000 Cr MoUs Expected",
+      hi: "व्यापारिक साझेदारी के लिए अंतर्राष्ट्रीय प्रतिनिधिमंडल - ₹15,000 करोड़ MoU अपेक्षित"
+    },
+    date: "2024-09-02",
+    category: {
+      en: "International Trade",
+      hi: "अंतर्राष्ट्रीय व्यापार"
+    },
+    url: "/news/10"
+  },
+  {
+    id: 10,
+    title: {
+      en: "Green Energy Milestone - 2000 MW Solar Capacity Achieved",
+      hi: "हरित ऊर्जा मील का पत्थर - 2000 मेगावाट सौर क्षमता हासिल"
+    },
+    date: "2024-09-01",
+    category: {
+      en: "Renewable Energy",
+      hi: "नवीकरणीय ऊर्जा"
+    },
+    url: "/news/11"
   }
 ];
 
@@ -152,44 +219,24 @@ export default function NewsStrip({
   if (!isVisible) return null;
 
   const baseClasses = `
-    relative overflow-hidden bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 
-    text-white shadow-lg border-l-4 border-yellow-400
+    relative overflow-hidden bg-gradient-to-r from-gray-900 via-gray-800 to-black
+    text-white shadow-2xl
     ${position === 'top' ? 'sticky top-0 z-40' : ''}
     ${position === 'bottom' ? 'sticky bottom-0 z-40' : ''}
+    ${position === 'inline' ? 'my-4 rounded-xl' : ''}
     ${className}
   `;
 
   const breakingNews = newsItems.filter(item => item.isBreaking);
   const regularNews = newsItems.filter(item => !item.isBreaking);
-  const displayNews = breakingNews.length > 0 ? breakingNews : regularNews;
+  const displayNews = newsItems; // Show all news items for simple scrolling
 
   return (
     <div className={baseClasses}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform skew-x-12"></div>
-      </div>
-
-      <div className="relative px-4 py-3">
+      <div className="relative px-6 py-3">
         <div className="flex items-center justify-between">
-          {/* News Header */}
-          <div className="flex items-center space-x-3 flex-shrink-0">
-            <div className="flex items-center space-x-2">
-              {breakingNews.length > 0 && (
-                <div className="bg-red-600 px-4 py-2 rounded-lg text-sm font-bold">
-                  {language === 'en' ? 'BREAKING' : 'तत्काल'}
-                </div>
-              )}
-              <div className="bg-blue-600 px-4 py-2 rounded-lg">
-                <span className="font-semibold text-sm text-white">
-                  {language === 'en' ? 'Latest News' : 'ताज़ा खबर'}
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* News Content Area */}
-          <div className="flex-1 mx-6">
+          <div className="flex-1">
             {variant === 'scrolling' && (
               <div 
                 className={`flex ${pauseOnHover ? 'hover:pause' : ''}`}
@@ -209,21 +256,14 @@ export default function NewsStrip({
                     <Link
                       key={`${item.id}-${index}`}
                       href={item.url || '/news'}
-                      className="flex items-center space-x-6 hover:text-yellow-300 transition-colors duration-300"
+                      className="flex items-center space-x-4 hover:text-yellow-300 transition-colors duration-300"
                     >
                       <div className="flex items-center space-x-3">
                         <div className="w-2 h-2 bg-yellow-400 rounded-full flex-shrink-0"></div>
-                        <span className="font-medium text-lg">{item.title[language]}</span>
-                        <span className="text-blue-200 text-sm font-medium border-l border-blue-300 pl-3">
+                        <span className="font-medium text-base">{item.title[language]}</span>
+                        <span className="text-blue-200 text-sm border-l border-blue-300 pl-3">
                           {item.category[language]}
                         </span>
-                        <div className="flex items-center text-blue-200 text-sm border-l border-blue-300 pl-3">
-                          <CalendarDaysIcon className="h-4 w-4 mr-1" />
-                          {new Date(item.date).toLocaleDateString(language === 'en' ? 'en-IN' : 'hi-IN', {
-                            month: 'short',
-                            day: 'numeric'
-                          })}
-                        </div>
                       </div>
                     </Link>
                   ))}

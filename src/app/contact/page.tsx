@@ -58,6 +58,8 @@ export default function Contact() {
               <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Home</Link>
               <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
               <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Directory</Link>
+              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
+              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
               <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
               <Link href="/contact" className="text-blue-600 font-semibold border-b-2 border-blue-600">Contact</Link>
               <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
