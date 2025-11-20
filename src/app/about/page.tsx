@@ -1,11 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   BuildingOfficeIcon,
   UserGroupIcon,
-  ChartBarIcon,
   TrophyIcon,
   ClockIcon,
   GlobeAltIcon,
@@ -238,11 +236,11 @@ export default function About() {
               </div>
 
               <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-bold mb-6 text-blue-200">President's Message</h3>
+                <h3 className="text-2xl font-bold mb-6 text-blue-200">President&apos;s Message</h3>
                 <blockquote className="text-xl md:text-2xl font-light leading-relaxed mb-8 italic">
-                  "It is a matter of great prestige that Chhattisgarh Udyog Mahasangh creates its
+                  &quot;It is a matter of great prestige that Chhattisgarh Udyog Mahasangh creates its
                   Digital Telephone Directory-2024 Edition-VI. We are committed to providing comprehensive solutions and fostering
-                  economic growth across all sectors."
+                  economic growth across all sectors.&quot;
                 </blockquote>
                 <div>
                   <div className="text-2xl font-bold font-serif">Mahesh Kakkar</div>

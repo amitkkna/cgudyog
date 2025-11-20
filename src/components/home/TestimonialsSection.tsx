@@ -29,7 +29,7 @@ const testimonials = [
         name: "Amit Verma",
         company: "TechnoSoft Solutions",
         role: "Founder",
-        content: "The directory has been a game-changer for our startup. We've connected with potential clients, found talented employees, and established ourselves in the local business ecosystem.",
+        content: "The directory has been a game-changer for our startup. We&apos;ve connected with potential clients, found talented employees, and established ourselves in the local business ecosystem.",
         rating: 5,
         image: "👨‍💻"
     },
@@ -38,7 +38,7 @@ const testimonials = [
         name: "Sunita Patel",
         company: "Green Valley Agro Processing",
         role: "Managing Director",
-        content: "Excellent platform for agricultural businesses! The connections we've made through CG Udyog have helped us expand our distribution network and reach new markets efficiently.",
+        content: "Excellent platform for agricultural businesses! The connections we&apos;ve made through CG Udyog have helped us expand our distribution network and reach new markets efficiently.",
         rating: 5,
         image: "👩‍🌾"
     }
@@ -166,7 +166,7 @@ export default function TestimonialsSection() {
                             >
                                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
                                     {/* Quote Icon */}
-                                    <div className="text-6xl text-blue-400/30 mb-4">"</div>
+                                    <div className="text-6xl text-blue-400/30 mb-4">&quot;</div>
 
                                     {/* Rating */}
                                     <div className="flex gap-1 mb-6">
@@ -222,8 +222,8 @@ export default function TestimonialsSection() {
                                         setCurrentIndex(index);
                                     }}
                                     className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                            ? 'w-8 bg-blue-400'
-                                            : 'w-2 bg-white/30 hover:bg-white/50'
+                                        ? 'w-8 bg-blue-400'
+                                        : 'w-2 bg-white/30 hover:bg-white/50'
                                         }`}
                                 />
                             ))}

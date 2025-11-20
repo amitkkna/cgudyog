@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
+import {
   XMarkIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -227,9 +227,7 @@ export default function NewsStrip({
     ${className}
   `;
 
-  const breakingNews = newsItems.filter(item => item.isBreaking);
-  const regularNews = newsItems.filter(item => !item.isBreaking);
-  const displayNews = newsItems; // Show all news items for simple scrolling
+  const displayNews = newsItems;
 
   return (
     <div className={baseClasses}>
@@ -238,7 +236,7 @@ export default function NewsStrip({
           {/* News Content Area */}
           <div className="flex-1">
             {variant === 'scrolling' && (
-              <div 
+              <div
                 className={`flex ${pauseOnHover ? 'hover:pause' : ''}`}
                 onMouseEnter={() => pauseOnHover && setIsPaused(true)}
                 onMouseLeave={() => pauseOnHover && setIsPaused(false)}

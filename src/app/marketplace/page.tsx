@@ -1,24 +1,20 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   BuildingOfficeIcon,
   PhoneIcon,
   EnvelopeIcon,
-  MapPinIcon,
-  GlobeAltIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
-  TagIcon,
   CalendarDaysIcon,
   CurrencyDollarIcon,
-  ClockIcon,
-  StarIcon,
-  XMarkIcon,
   CheckCircleIcon,
-  ExclamationTriangleIcon
+  XMarkIcon,
+  MagnifyingGlassIcon,
+  TagIcon,
+  MapPinIcon,
+  ClockIcon,
+  PlusIcon
 } from '@heroicons/react/24/outline';
 
 interface MarketplaceListing {
@@ -76,27 +72,6 @@ const sampleListings: MarketplaceListing[] = [
     description: "We offer premium quality rice export services with international certifications. Bulk quantities available for export to Middle East and European markets.",
     budget: "₹25 - ₹35 per kg",
     deadline: "2024-12-15",
-    location: "Raipur, Chhattisgarh",
-    contact: {
-      name: "Sunita Verma",
-      phone: "0771-245-8901",
-      email: "export@cgagro.com"
-    },
-    specifications: ["Basmati Rice", "Export Quality", "International Certification", "Bulk Orders"],
-    postedDate: "2024-11-10",
-    status: "active",
-    priority: "medium",
-    verified: true
-  },
-  {
-    id: 3,
-    title: "Construction Materials Needed",
-    company: "Raipur Infrastructure Ltd",
-    category: "Construction",
-    type: "requirement",
-    description: "Large scale requirement for construction materials including cement, steel rods, bricks, and concrete mixers for upcoming housing project.",
-    budget: "₹2,00,00,000 - ₹5,00,00,000",
-    deadline: "2024-11-30",
     location: "Raipur, Chhattisgarh",
     contact: {
       name: "Amit Sharma",

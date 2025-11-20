@@ -7,8 +7,7 @@ import {
   PhoneIcon,
   EnvelopeIcon,
   PaperAirplaneIcon,
-  ClockIcon,
-  ChatBubbleLeftRightIcon
+  ClockIcon
 } from '@heroicons/react/24/outline';
 
 export default function Contact() {
@@ -88,11 +87,11 @@ export default function Contact() {
               Contact Support
             </span>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Let's Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Conversation</span>
+              Let&apos;s Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Conversation</span>
             </h1>
             <p className="text-xl text-blue-100/80 max-w-2xl mx-auto">
               Have questions about membership, events, or business opportunities?
-              We're here to help you grow your business in Chhattisgarh.
+              We&apos;re here to help you grow your business in Chhattisgarh.
             </p>
           </motion.div>
         </div>
@@ -150,7 +149,7 @@ export default function Contact() {
             <div className="lg:col-span-3 p-8 md:p-12 bg-white">
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Send us a Message</h3>
-                <p className="text-gray-500">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <p className="text-gray-500">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">

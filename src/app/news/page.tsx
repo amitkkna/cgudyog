@@ -4,15 +4,13 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
-  BuildingOfficeIcon,
   NewspaperIcon,
   CalendarDaysIcon,
   ArrowRightIcon,
   MagnifyingGlassIcon,
   TagIcon,
   ClockIcon,
-  UserIcon,
-  LanguageIcon
+  UserIcon
 } from '@heroicons/react/24/outline';
 
 interface NewsItem {
@@ -384,7 +382,7 @@ export default function News() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [filteredNews, setFilteredNews] = useState(sampleNews);
-  const [language, setLanguage] = useState<'en' | 'hi'>('en');
+  const [language] = useState<'en' | 'hi'>('en');
 
   useEffect(() => {
     const filtered = sampleNews.filter(news => {
@@ -401,13 +399,6 @@ export default function News() {
 
   const featuredNews = filteredNews.filter(news => news.featured);
   const regularNews = filteredNews.filter(news => !news.featured);
-
-  const toggleLanguage = () => {
-    const newLang = language === 'en' ? 'hi' : 'en';
-    setLanguage(newLang);
-    // Reset category when switching language
-    setSelectedCategory(newLang === 'en' ? 'All' : 'सभी');
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">

@@ -1,25 +1,21 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
+  BriefcaseIcon,
+  MapPinIcon,
+  ClockIcon,
+  MagnifyingGlassIcon,
+  XMarkIcon,
   BuildingOfficeIcon,
+  UserGroupIcon,
+  GlobeAltIcon,
   PhoneIcon,
   EnvelopeIcon,
-  MapPinIcon,
-  CurrencyDollarIcon,
-  ClockIcon,
-  AcademicCapIcon,
-  BriefcaseIcon,
-  UserGroupIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
   CalendarDaysIcon,
-  StarIcon,
-  XMarkIcon,
-  CheckCircleIcon,
-  GlobeAltIcon
+  CurrencyDollarIcon,
+  PlusIcon
 } from '@heroicons/react/24/outline';
 
 interface JobListing {
@@ -222,22 +218,22 @@ const sampleJobs: JobListing[] = [
     location: "Raipur, Chhattisgarh",
     experience: "4-6 years",
     salary: "₹10,00,000 - ₹15,00,000 per annum",
-    description: "Lead our marketing efforts to promote infrastructure projects and build brand awareness. Develop and execute comprehensive marketing strategies.",
+    description: "We are seeking a creative Marketing Manager to lead our marketing initiatives. You will be responsible for developing and implementing marketing strategies to increase brand awareness and drive sales.",
     responsibilities: [
-      "Develop and implement marketing strategies",
-      "Manage digital marketing campaigns",
-      "Build relationships with media and stakeholders",
-      "Oversee content creation and branding",
-      "Analyze marketing performance metrics"
+      "Develop and execute marketing campaigns",
+      "Manage social media presence",
+      "Analyze market trends and competitor activities",
+      "Collaborate with sales team to generate leads",
+      "Oversee marketing budget and ROI"
     ],
     requirements: [
-      "Bachelor's degree in Marketing or related field",
+      "Bachelor's degree in Marketing or Business",
       "4+ years of experience in marketing",
-      "Experience in B2B marketing and infrastructure sector",
-      "Strong digital marketing skills",
-      "Creative thinking and leadership abilities"
+      "Strong understanding of digital marketing channels",
+      "Excellent communication and leadership skills",
+      "Experience with marketing analytics tools"
     ],
-    skills: ["Digital Marketing", "Content Strategy", "Brand Management", "SEO/SEM", "Social Media"],
+    skills: ["Digital Marketing", "Content Strategy", "SEO/SEM", "Social Media Management", "Analytics"],
     benefits: ["Health Insurance", "Car Allowance", "Performance Bonus", "Team Outings"],
     contact: {
       name: "Amit Sharma",
