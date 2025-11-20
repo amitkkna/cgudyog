@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import {
     UserGroupIcon,
     BuildingOfficeIcon,
@@ -49,7 +49,7 @@ function AnimatedCounter({ end, duration = 2, suffix = '' }: AnimatedCounterProp
 }
 
 export default function StatsSection() {
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -60,7 +60,7 @@ export default function StatsSection() {
         }
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         hidden: { y: 30, opacity: 0, scale: 0.9 },
         visible: {
             y: 0,
