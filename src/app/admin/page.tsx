@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   BuildingOfficeIcon,
   PlusIcon,
   NewspaperIcon,
@@ -104,38 +104,11 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Spacer for fixed navbar */}
+      <div className="h-24" />
+
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl">
-                <BuildingOfficeIcon className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Admin Panel
-                </h1>
-                <p className="text-lg text-blue-600 font-semibold">Chhattisgarh Udyog Mahasangh</p>
-              </div>
-            </motion.div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Home</Link>
-              <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
-              <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Directory</Link>
-              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
-              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
-              <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -151,11 +124,10 @@ export default function Admin() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                      : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
-                  }`}
+                  className={`w-full flex items-center px-4 py-3 rounded-xl transition-all duration-300 ${activeTab === tab.id
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                    : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
                 >
                   <tab.icon className="h-5 w-5 mr-3" />
                   {tab.name}
@@ -174,7 +146,7 @@ export default function Admin() {
               <div className="space-y-8">
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     {[
                       { label: 'Total Businesses', value: '500+', icon: BuildingOfficeIcon, color: 'from-blue-500 to-blue-600' },
@@ -264,7 +236,7 @@ export default function Admin() {
                         id="title"
                         required
                         value={newsForm.title}
-                        onChange={(e) => setNewsForm({...newsForm, title: e.target.value})}
+                        onChange={(e) => setNewsForm({ ...newsForm, title: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter article title"
                       />
@@ -279,7 +251,7 @@ export default function Admin() {
                         <select
                           id="category"
                           value={newsForm.category}
-                          onChange={(e) => setNewsForm({...newsForm, category: e.target.value})}
+                          onChange={(e) => setNewsForm({ ...newsForm, category: e.target.value })}
                           className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
                           {newsCategories.map(category => (
@@ -301,7 +273,7 @@ export default function Admin() {
                         id="author"
                         required
                         value={newsForm.author}
-                        onChange={(e) => setNewsForm({...newsForm, author: e.target.value})}
+                        onChange={(e) => setNewsForm({ ...newsForm, author: e.target.value })}
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Author name"
                       />
@@ -317,7 +289,7 @@ export default function Admin() {
                       required
                       rows={3}
                       value={newsForm.excerpt}
-                      onChange={(e) => setNewsForm({...newsForm, excerpt: e.target.value})}
+                      onChange={(e) => setNewsForm({ ...newsForm, excerpt: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Brief summary of the article (2-3 sentences)"
                     />
@@ -332,7 +304,7 @@ export default function Admin() {
                       required
                       rows={8}
                       value={newsForm.content}
-                      onChange={(e) => setNewsForm({...newsForm, content: e.target.value})}
+                      onChange={(e) => setNewsForm({ ...newsForm, content: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Full article content"
                     />
@@ -343,7 +315,7 @@ export default function Admin() {
                       type="checkbox"
                       id="featured"
                       checked={newsForm.featured}
-                      onChange={(e) => setNewsForm({...newsForm, featured: e.target.checked})}
+                      onChange={(e) => setNewsForm({ ...newsForm, featured: e.target.checked })}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                     />
                     <label htmlFor="featured" className="ml-2 block text-sm text-gray-700">
@@ -386,7 +358,7 @@ export default function Admin() {
                         id="businessName"
                         required
                         value={businessForm.name}
-                        onChange={(e) => setBusinessForm({...businessForm, name: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, name: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter business name"
                       />
@@ -399,7 +371,7 @@ export default function Admin() {
                       <select
                         id="businessCategory"
                         value={businessForm.category}
-                        onChange={(e) => setBusinessForm({...businessForm, category: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, category: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       >
                         {businessCategories.map(category => (
@@ -419,7 +391,7 @@ export default function Admin() {
                         id="phone"
                         required
                         value={businessForm.phone}
-                        onChange={(e) => setBusinessForm({...businessForm, phone: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, phone: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter phone number"
                       />
@@ -434,7 +406,7 @@ export default function Admin() {
                         id="email"
                         required
                         value={businessForm.email}
-                        onChange={(e) => setBusinessForm({...businessForm, email: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, email: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Enter email address"
                       />
@@ -450,7 +422,7 @@ export default function Admin() {
                       required
                       rows={2}
                       value={businessForm.address}
-                      onChange={(e) => setBusinessForm({...businessForm, address: e.target.value})}
+                      onChange={(e) => setBusinessForm({ ...businessForm, address: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Complete business address"
                     />
@@ -464,7 +436,7 @@ export default function Admin() {
                       id="description"
                       rows={3}
                       value={businessForm.description}
-                      onChange={(e) => setBusinessForm({...businessForm, description: e.target.value})}
+                      onChange={(e) => setBusinessForm({ ...businessForm, description: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Brief description of the business"
                     />
@@ -479,7 +451,7 @@ export default function Admin() {
                         type="url"
                         id="website"
                         value={businessForm.website}
-                        onChange={(e) => setBusinessForm({...businessForm, website: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, website: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="www.example.com"
                       />
@@ -495,7 +467,7 @@ export default function Admin() {
                         min="1900"
                         max="2024"
                         value={businessForm.established}
-                        onChange={(e) => setBusinessForm({...businessForm, established: e.target.value})}
+                        onChange={(e) => setBusinessForm({ ...businessForm, established: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="YYYY"
                       />

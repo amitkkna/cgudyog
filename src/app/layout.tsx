@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import { defaultMetadata } from "./metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,18 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Chhattisgarh Udyog Mahasangh - Premier Business Platform",
-  description: "Comprehensive digital directory connecting industries, suppliers, government departments, and transporters across Chhattisgarh. Your single solution for business networking in Chhattisgarh.",
-  keywords: ["Chhattisgarh", "Udyog Mahasangh", "Business Directory", "Industries", "Raipur", "Suppliers", "Transportation"],
-  authors: [{ name: "Chhattisgarh Udyog Mahasangh" }],
-  openGraph: {
-    title: "Chhattisgarh Udyog Mahasangh",
-    description: "Premier business platform connecting all industries in Chhattisgarh",
-    type: "website",
-    locale: "en_IN",
-  },
-};
+export const metadata: Metadata = defaultMetadata;
 
 export default function RootLayout({
   children,
@@ -31,11 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        <Navbar />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

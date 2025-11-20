@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NewsStrip from '@/components/NewsStrip';
-import { 
-  BuildingOfficeIcon, 
-  PhoneIcon, 
-  EnvelopeIcon, 
+import {
+  BuildingOfficeIcon,
+  PhoneIcon,
+  EnvelopeIcon,
   MapPinIcon,
   GlobeAltIcon,
   MagnifyingGlassIcon,
@@ -353,9 +353,9 @@ export default function Directory() {
   useEffect(() => {
     const filtered = sampleBusinesses.filter(business => {
       const matchesSearch = business.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           business.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           business.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           business.address.toLowerCase().includes(searchTerm.toLowerCase());
+        business.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        business.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        business.address.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || business.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
@@ -413,7 +413,7 @@ export default function Directory() {
   // Generate inline ad components for grid/list views
   const generateInlineAd = (index: number) => {
     const ad = advertisementData[index % advertisementData.length];
-    
+
     return (
       <motion.div
         key={`ad-${ad.id}`}
@@ -440,41 +440,10 @@ export default function Directory() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl">
-                <BuildingOfficeIcon className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Chhattisgarh
-                </h1>
-                <p className="text-lg text-blue-600 font-semibold">Udyog Mahasangh</p>
-              </div>
-            </motion.div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Home</Link>
-              <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">About</Link>
-              <Link href="/directory" className="text-blue-600 font-semibold border-b-2 border-blue-600">Directory</Link>
-              <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Marketplace</Link>
-              <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Jobs</Link>
-              <Link href="/news" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">News</Link>
-              <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">Contact</Link>
-              <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-                Admin
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-24" />
 
       {/* Hero Section */}
       <section className="py-16">
@@ -539,33 +508,30 @@ export default function Directory() {
               <div className="flex bg-gray-100 rounded-xl p-1">
                 <button
                   onClick={() => setViewMode('table')}
-                  className={`p-2 rounded-lg transition-all duration-300 ${
-                    viewMode === 'table' 
-                      ? 'bg-white shadow-sm text-blue-600' 
-                      : 'text-gray-500 hover:text-gray-700'
-                  }`}
+                  className={`p-2 rounded-lg transition-all duration-300 ${viewMode === 'table'
+                    ? 'bg-white shadow-sm text-blue-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                    }`}
                   title="Table View"
                 >
                   <TableCellsIcon className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-lg transition-all duration-300 ${
-                    viewMode === 'grid' 
-                      ? 'bg-white shadow-sm text-blue-600' 
-                      : 'text-gray-500 hover:text-gray-700'
-                  }`}
+                  className={`p-2 rounded-lg transition-all duration-300 ${viewMode === 'grid'
+                    ? 'bg-white shadow-sm text-blue-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                    }`}
                   title="Grid View"
                 >
                   <Squares2X2Icon className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-lg transition-all duration-300 ${
-                    viewMode === 'list' 
-                      ? 'bg-white shadow-sm text-blue-600' 
-                      : 'text-gray-500 hover:text-gray-700'
-                  }`}
+                  className={`p-2 rounded-lg transition-all duration-300 ${viewMode === 'list'
+                    ? 'bg-white shadow-sm text-blue-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                    }`}
                   title="List View"
                 >
                   <ListBulletIcon className="h-5 w-5" />
@@ -576,7 +542,7 @@ export default function Directory() {
 
           {/* Industry News Strip */}
           <div className="mb-8">
-            <NewsStrip 
+            <NewsStrip
               position="inline"
               variant="sliding"
               autoPlay={true}
@@ -680,18 +646,16 @@ export default function Directory() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className={`group hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300 ${
-                              business.featured ? 'bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400' : ''
-                            } hover:shadow-lg`}
+                            className={`group hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-300 ${business.featured ? 'bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400' : ''
+                              } hover:shadow-lg`}
                           >
                             <td className="px-6 py-4">
                               <div className="flex items-center space-x-3">
                                 <div className="relative">
-                                  <div className={`p-2 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 ${
-                                    business.featured 
-                                      ? 'bg-gradient-to-r from-amber-500 to-orange-500' 
-                                      : 'bg-gradient-to-r from-blue-500 to-indigo-500'
-                                  }`}>
+                                  <div className={`p-2 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 ${business.featured
+                                    ? 'bg-gradient-to-r from-amber-500 to-orange-500'
+                                    : 'bg-gradient-to-r from-blue-500 to-indigo-500'
+                                    }`}>
                                     <CategoryIcon className="h-5 w-5 text-white" />
                                   </div>
                                   {business.featured && (
@@ -828,16 +792,15 @@ export default function Directory() {
               >
                 {filteredBusinesses.map((business, index) => {
                   const CategoryIcon = categoryIcons[business.category as keyof typeof categoryIcons] || BuildingOfficeIcon;
-                  
+
                   return (
                     <motion.div
                       key={business.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 ${
-                        business.featured ? 'border-l-yellow-400' : 'border-l-blue-500'
-                      }`}
+                      className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-l-4 ${business.featured ? 'border-l-yellow-400' : 'border-l-blue-500'
+                        }`}
                     >
                       {business.featured && (
                         <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-2 text-sm font-semibold flex items-center">
@@ -845,7 +808,7 @@ export default function Directory() {
                           Featured Business
                         </div>
                       )}
-                      
+
                       <div className="p-6">
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center">
@@ -860,11 +823,10 @@ export default function Directory() {
                                 {[...Array(5)].map((_, i) => (
                                   <StarIcon
                                     key={i}
-                                    className={`h-4 w-4 ${
-                                      i < Math.floor(business.rating) 
-                                        ? 'text-yellow-400 fill-current' 
-                                        : 'text-gray-300'
-                                    }`}
+                                    className={`h-4 w-4 ${i < Math.floor(business.rating)
+                                      ? 'text-yellow-400 fill-current'
+                                      : 'text-gray-300'
+                                      }`}
                                   />
                                 ))}
                                 <span className="text-sm text-gray-600 ml-2">{business.rating}</span>
@@ -933,7 +895,7 @@ export default function Directory() {
                     </motion.div>
                   );
                 })}
-                
+
                 {/* Interstitial Ads in Grid */}
                 {filteredBusinesses.length > 6 && (
                   <div className="col-span-full">
@@ -957,9 +919,8 @@ export default function Directory() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.05 }}
-                      className={`group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${
-                        business.featured ? 'border-l-yellow-400' : 'border-l-blue-500'
-                      }`}
+                      className={`group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${business.featured ? 'border-l-yellow-400' : 'border-l-blue-500'
+                        }`}
                     >
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                         <div className="flex-1">
@@ -987,11 +948,10 @@ export default function Directory() {
                                   {[...Array(5)].map((_, i) => (
                                     <StarIcon
                                       key={i}
-                                      className={`h-4 w-4 ${
-                                        i < Math.floor(business.rating) 
-                                          ? 'text-yellow-400 fill-current' 
-                                          : 'text-gray-300'
-                                      }`}
+                                      className={`h-4 w-4 ${i < Math.floor(business.rating)
+                                        ? 'text-yellow-400 fill-current'
+                                        : 'text-gray-300'
+                                        }`}
                                     />
                                   ))}
                                   <span className="text-sm text-gray-600 ml-2">{business.rating}</span>
@@ -999,7 +959,7 @@ export default function Directory() {
                               </div>
                             </div>
                           </div>
-                          
+
                           <p className="text-gray-600 mb-4 leading-relaxed">
                             {business.description}
                           </p>
@@ -1068,7 +1028,7 @@ export default function Directory() {
               className="my-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden"
             >
               <div className="absolute -top-8 -right-8 text-8xl opacity-20">📈</div>
-              <button 
+              <button
                 onClick={() => setShowAd(false)}
                 className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors z-20"
               >
@@ -1115,42 +1075,42 @@ export default function Directory() {
             className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
           >
             <div className="absolute -top-4 -right-4 text-6xl opacity-10">🎯</div>
-            <button 
+            <button
               onClick={() => setShowPopupAd(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-20"
             >
               <XMarkIcon className="h-6 w-6" />
             </button>
-            
+
             <div className="text-center relative z-10">
               <div className="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="text-3xl">⭐</div>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 Limited Time Offer!
               </h3>
-              
+
               <p className="text-gray-600 mb-6">
-                Get 50% off on premium business listing for the first 3 months. 
+                Get 50% off on premium business listing for the first 3 months.
                 Boost your visibility and connect with more customers across Chhattisgarh.
               </p>
-              
+
               <div className="space-y-3">
-                <button 
+                <button
                   onClick={() => setShowPopupAd(false)}
                   className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                 >
                   Claim 50% Off Now
                 </button>
-                <button 
+                <button
                   onClick={() => setShowPopupAd(false)}
                   className="w-full text-gray-500 py-2 rounded-lg font-medium hover:text-gray-700 transition-colors"
                 >
                   Maybe Later
                 </button>
               </div>
-              
+
               <p className="text-xs text-gray-400 mt-4">
                 Offer valid until December 31, 2024
               </p>
@@ -1167,13 +1127,13 @@ export default function Directory() {
           exit={{ x: 400, opacity: 0 }}
           className="fixed bottom-6 right-6 max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 p-4 z-40"
         >
-          <button 
+          <button
             onClick={() => setShowFloatingAd(false)}
             className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
           >
             <XMarkIcon className="h-5 w-5" />
           </button>
-          
+
           <div className="pr-6">
             <div className="flex items-center mb-3">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-3">
@@ -1184,12 +1144,12 @@ export default function Directory() {
                 <p className="text-xs text-gray-500">Sponsored</p>
               </div>
             </div>
-            
+
             <p className="text-sm text-gray-600 mb-3">
               Scale your business with our proven marketing strategies.
             </p>
-            
-            <button 
+
+            <button
               onClick={() => setShowFloatingAd(false)}
               className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300"
             >
@@ -1199,12 +1159,7 @@ export default function Directory() {
         </motion.div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Chhattisgarh Udyog Mahasangh. All rights reserved.</p>
-        </div>
-      </footer>
+
     </div>
   );
 }

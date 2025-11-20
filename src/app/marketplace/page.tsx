@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  BuildingOfficeIcon, 
-  PhoneIcon, 
-  EnvelopeIcon, 
+import {
+  BuildingOfficeIcon,
+  PhoneIcon,
+  EnvelopeIcon,
   MapPinIcon,
   GlobeAltIcon,
   MagnifyingGlassIcon,
@@ -189,12 +189,12 @@ export default function Marketplace() {
   useEffect(() => {
     const filtered = sampleListings.filter(listing => {
       const matchesSearch = listing.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           listing.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           listing.description.toLowerCase().includes(searchTerm.toLowerCase());
+        listing.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        listing.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || listing.category === selectedCategory;
-      const matchesType = selectedType === 'All' || 
-                         (selectedType === 'Requirements' && listing.type === 'requirement') ||
-                         (selectedType === 'Offerings' && listing.type === 'offering');
+      const matchesType = selectedType === 'All' ||
+        (selectedType === 'Requirements' && listing.type === 'requirement') ||
+        (selectedType === 'Offerings' && listing.type === 'offering');
       const matchesPriority = selectedPriority === 'All' || listing.priority === selectedPriority.toLowerCase();
       return matchesSearch && matchesCategory && matchesType && matchesPriority;
     });
@@ -213,40 +213,17 @@ export default function Marketplace() {
   };
 
   const getTypeColor = (type: string) => {
-    return type === 'requirement' 
+    return type === 'requirement'
       ? 'bg-blue-100 text-blue-600 border-blue-200'
       : 'bg-purple-100 text-purple-600 border-purple-200';
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <BuildingOfficeIcon className="h-8 w-8 text-blue-600" />
-              <Link href="/" className="text-2xl font-bold text-gray-900">
-                CG<span className="text-blue-600">Udyog</span>
-              </Link>
-            </motion.div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
-              <Link href="/directory" className="text-gray-700 hover:text-blue-600 transition-colors">Directory</Link>
-              <Link href="/marketplace" className="text-blue-600 font-semibold">Marketplace</Link>
-              <Link href="/job-listing" className="text-gray-700 hover:text-blue-600 transition-colors">Jobs</Link>
-              <Link href="/news" className="text-gray-700 hover:text-blue-600 transition-colors">News</Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-24" />
 
       {/* Hero Section */}
       <section className="py-16">
@@ -471,13 +448,13 @@ export default function Marketplace() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
           >
-            <button 
+            <button
               onClick={() => setShowAddModal(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <XMarkIcon className="h-6 w-6" />
             </button>
-            
+
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Post New Listing</h3>
               <p className="text-gray-600">Share your business requirements or offerings with the community.</p>
@@ -603,12 +580,7 @@ export default function Marketplace() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Chhattisgarh Udyog Mahasangh. All rights reserved.</p>
-        </div>
-      </footer>
+
     </div>
   );
 }

@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  BuildingOfficeIcon, 
-  PhoneIcon, 
-  EnvelopeIcon, 
+import {
+  BuildingOfficeIcon,
+  PhoneIcon,
+  EnvelopeIcon,
   MapPinIcon,
   CurrencyDollarIcon,
   ClockIcon,
@@ -310,9 +310,9 @@ export default function JobListing() {
   useEffect(() => {
     const filtered = sampleJobs.filter(job => {
       const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           job.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           job.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
+        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
       const matchesCategory = selectedCategory === 'All' || job.category === selectedCategory;
       const matchesJobType = selectedJobType === 'All' || job.jobType === selectedJobType.toLowerCase().replace('-', '-');
       const matchesExperience = selectedExperience === 'All' || job.experience.includes(selectedExperience.split(' ')[0]);
@@ -335,33 +335,10 @@ export default function JobListing() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <BuildingOfficeIcon className="h-8 w-8 text-blue-600" />
-              <Link href="/" className="text-2xl font-bold text-gray-900">
-                CG<span className="text-blue-600">Udyog</span>
-              </Link>
-            </motion.div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
-              <Link href="/directory" className="text-gray-700 hover:text-blue-600 transition-colors">Directory</Link>
-              <Link href="/marketplace" className="text-gray-700 hover:text-blue-600 transition-colors">Marketplace</Link>
-              <Link href="/job-listing" className="text-blue-600 font-semibold">Jobs</Link>
-              <Link href="/news" className="text-gray-700 hover:text-blue-600 transition-colors">News</Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-24" />
 
       {/* Hero Section */}
       <section className="py-16">
@@ -462,9 +439,8 @@ export default function JobListing() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${
-                  job.isUrgent ? 'border-l-red-500' : 'border-l-blue-500'
-                }`}
+                className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${job.isUrgent ? 'border-l-red-500' : 'border-l-blue-500'
+                  }`}
               >
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   <div className="flex-1">
@@ -613,13 +589,13 @@ export default function JobListing() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="bg-white rounded-2xl max-w-4xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto"
           >
-            <button 
+            <button
               onClick={() => setShowAddModal(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <XMarkIcon className="h-6 w-6" />
             </button>
-            
+
             <div className="mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Post Job Opening</h3>
               <p className="text-gray-600">Share job opportunities with qualified candidates across Chhattisgarh.</p>
@@ -795,12 +771,7 @@ export default function JobListing() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Chhattisgarh Udyog Mahasangh. All rights reserved.</p>
-        </div>
-      </footer>
+
     </div>
   );
 }

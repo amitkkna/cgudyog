@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  BuildingOfficeIcon, 
+import {
+  BuildingOfficeIcon,
   NewspaperIcon,
   CalendarDaysIcon,
   ArrowRightIcon,
@@ -390,10 +390,10 @@ export default function News() {
     const filtered = sampleNews.filter(news => {
       const currentLang = language;
       const matchesSearch = news.title[currentLang].toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           news.content[currentLang].toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           news.excerpt[currentLang].toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === (language === 'en' ? 'All' : 'सभी') || 
-                             news.category[currentLang] === selectedCategory;
+        news.content[currentLang].toLowerCase().includes(searchTerm.toLowerCase()) ||
+        news.excerpt[currentLang].toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === (language === 'en' ? 'All' : 'सभी') ||
+        news.category[currentLang] === selectedCategory;
       return matchesSearch && matchesCategory;
     });
     setFilteredNews(filtered);
@@ -411,71 +411,13 @@ export default function News() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl">
-                <BuildingOfficeIcon className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Chhattisgarh
-                </h1>
-                <p className="text-lg text-blue-600 font-semibold">Udyog Mahasangh</p>
-              </div>
-            </motion.div>
-            
-            <div className="flex items-center space-x-4">
-              <nav className="hidden md:flex space-x-8">
-                <Link href="/" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Home' : 'होम'}
-                </Link>
-                <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'About' : 'हमारे बारे में'}
-                </Link>
-                <Link href="/directory" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Directory' : 'निर्देशिका'}
-                </Link>
-                <Link href="/marketplace" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Marketplace' : 'मार्केटप्लेस'}
-                </Link>
-                <Link href="/job-listing" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Jobs' : 'नौकरियां'}
-                </Link>
-                <Link href="/news" className="text-blue-600 font-semibold border-b-2 border-blue-600">
-                  {language === 'en' ? 'News' : 'समाचार'}
-                </Link>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Contact' : 'संपर्क'}
-                </Link>
-                <Link href="/admin" className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  {language === 'en' ? 'Admin' : 'एडमिन'}
-                </Link>
-              </nav>
-              
-              {/* Language Toggle */}
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center space-x-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 hover:bg-white/90 transition-all duration-300"
-              >
-                <LanguageIcon className="h-5 w-5 text-blue-600" />
-                <span className="text-sm font-semibold text-gray-700">
-                  {language === 'en' ? 'हिंदी' : 'English'}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-24" />
 
       {/* Premium Breaking News Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 text-white py-3 shadow-lg relative overflow-hidden"
@@ -484,7 +426,7 @@ export default function News() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <motion.span 
+              <motion.span
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
                 className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide"
@@ -493,7 +435,7 @@ export default function News() {
               </motion.span>
               <div className="hidden md:block w-2 h-2 bg-white rounded-full animate-pulse"></div>
               <p className="text-sm md:text-base font-medium">
-                {language === 'en' 
+                {language === 'en'
                   ? 'Chhattisgarh Industrial Growth Reaches Record 35% Increase - Major International Investments Announced'
                   : 'छत्तीसगढ़ का औद्योगिक विकास रिकॉर्ड 35% वृद्धि पर पहुंचा - प्रमुख अंतर्राष्ट्रीय निवेश की घोषणा'
                 }
@@ -530,7 +472,7 @@ export default function News() {
               )}
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              {language === 'en' 
+              {language === 'en'
                 ? "Stay informed with the latest developments, industry insights, and important announcements from Chhattisgarh's business ecosystem"
                 : "छत्तीसगढ़ के व्यापारिक पारिस्थितिकी तंत्र से नवीनतम विकास, उद्योग अंतर्दृष्टि और महत्वपूर्ण घोषणाओं के साथ सूचित रहें"
               }
@@ -549,8 +491,8 @@ export default function News() {
                 <MagnifyingGlassIcon className="h-6 w-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
                   type="text"
-                  placeholder={language === 'en' 
-                    ? "Search news, announcements, or topics..." 
+                  placeholder={language === 'en'
+                    ? "Search news, announcements, or topics..."
                     : "समाचार, घोषणाएं या विषय खोजें..."
                   }
                   className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-lg"
@@ -593,13 +535,13 @@ export default function News() {
                 {language === 'en' ? 'Breaking Headlines' : 'मुख्य समाचार'}
               </h3>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {language === 'en' 
+                {language === 'en'
                   ? 'Stay ahead with the most impactful stories shaping Chhattisgarh\'s business landscape'
                   : 'छत्तीसगढ़ के व्यापारिक परिदृश्य को आकार देने वाली सबसे प्रभावशाली कहानियों के साथ आगे रहें'
                 }
               </p>
             </motion.div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredNews.map((news, index) => (
                 <motion.article
@@ -629,15 +571,15 @@ export default function News() {
                       </div>
                     </div>
                   )}
-                  
+
                   <div className="p-8">
                     <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
                       <div className="flex items-center">
                         <CalendarDaysIcon className="h-4 w-4 mr-2" />
-                        {new Date(news.date).toLocaleDateString(language === 'en' ? 'en-IN' : 'hi-IN', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
+                        {new Date(news.date).toLocaleDateString(language === 'en' ? 'en-IN' : 'hi-IN', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
                         })}
                       </div>
                       <div className="flex items-center">
@@ -645,21 +587,21 @@ export default function News() {
                         {news.readTime[language]}
                       </div>
                     </div>
-                    
+
                     <h4 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors leading-tight">
                       {news.title[language]}
                     </h4>
-                    
+
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       {news.excerpt[language]}
                     </p>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center text-sm text-gray-500">
                         <UserIcon className="h-4 w-4 mr-2" />
                         {news.author[language]}
                       </div>
-                      <Link 
+                      <Link
                         href={`/news/${news.id}`}
                         className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
                       >
@@ -688,7 +630,7 @@ export default function News() {
               >
                 {language === 'en' ? 'Latest News' : 'नवीनतम समाचार'}
               </motion.h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {regularNews.map((news, index) => (
                   <motion.article
@@ -707,14 +649,14 @@ export default function News() {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-3 text-sm text-gray-500">
                         <div className="flex items-center">
                           <CalendarDaysIcon className="h-4 w-4 mr-2" />
-                          {new Date(news.date).toLocaleDateString(language === 'en' ? 'en-IN' : 'hi-IN', { 
-                            month: 'short', 
-                            day: 'numeric' 
+                          {new Date(news.date).toLocaleDateString(language === 'en' ? 'en-IN' : 'hi-IN', {
+                            month: 'short',
+                            day: 'numeric'
                           })}
                         </div>
                         <div className="flex items-center">
@@ -722,21 +664,21 @@ export default function News() {
                           {news.readTime[language]}
                         </div>
                       </div>
-                      
+
                       <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight">
                         {news.title[language]}
                       </h4>
-                      
+
                       <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                         {news.excerpt[language]}
                       </p>
-                      
+
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-xs text-gray-500">
                           <UserIcon className="h-3 w-3 mr-1" />
                           {news.author[language]}
                         </div>
-                        <Link 
+                        <Link
                           href={`/news/${news.id}`}
                           className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm"
                         >
@@ -762,8 +704,8 @@ export default function News() {
                 {language === 'en' ? 'No news found' : 'कोई समाचार नहीं मिला'}
               </h3>
               <p className="text-gray-600">
-                {language === 'en' 
-                  ? 'Try adjusting your search terms or category filter.' 
+                {language === 'en'
+                  ? 'Try adjusting your search terms or category filter.'
                   : 'अपने खोज शब्दों या श्रेणी फ़िल्टर को समायोजित करने का प्रयास करें।'
                 }
               </p>
@@ -772,17 +714,7 @@ export default function News() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>
-            {language === 'en' 
-              ? '© 2024 Chhattisgarh Udyog Mahasangh. All rights reserved.' 
-              : '© 2024 छत्तीसगढ़ उद्योग महासंघ। सभी अधिकार सुरक्षित।'
-            }
-          </p>
-        </div>
-      </footer>
+
     </div>
   );
 }
